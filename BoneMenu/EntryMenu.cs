@@ -10,16 +10,14 @@ namespace AvatarStatsLoader.BoneMenu
     {
         public readonly MenuCategory menu;
         public readonly EntryFloatElement value;
-        public readonly EntryFloatIncrementElement incrementPointOne, incrementPointZeroOne, incrementPointZeroZeroOne;
+        public readonly EntryFloatMultiplierElement multiplyByTen;
         public readonly FunctionElement setToOne, loadFromAvatar, loadFromAvatarCalculated;
 
         public EntryMenu(MenuCategory parentMenu, string name, Func<float> getFromLoaded, MelonPreferences_Entry<float> entry)
         {
             menu = parentMenu.CreateCategory(name, "ffffff");
             value = menu.CreateEntryFloatElement("value", "ffffff", entry, 1f);
-            incrementPointOne = menu.CreateEntryFloatIncrementElement("ffffff", entry, 0.1f);
-            incrementPointZeroOne = menu.CreateEntryFloatIncrementElement("ffffff", entry, 0.01f);
-            incrementPointZeroZeroOne = menu.CreateEntryFloatIncrementElement("ffffff", entry, 0.001f);
+            multiplyByTen = menu.CreateEntryFloatMultiplierElement("ffffff", entry, 10f);
             setToOne = menu.CreateFunctionElement("Set to 1.0", "ffffff", () => {
                 entry.Value = 1.0f;
             });

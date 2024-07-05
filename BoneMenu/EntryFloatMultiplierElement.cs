@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace AvatarStatsLoader.BoneMenu
 {
-    public class EntryFloatIncrementElement : MenuElement
+    public class EntryFloatMultiplierElement : MenuElement
     {
         protected readonly MelonPreferences_Entry<float> entry;
-        protected readonly float increment;
+        protected readonly float multiplier;
 
-        public EntryFloatIncrementElement(string name, Color color, MelonPreferences_Entry<float> entry, float increment) : base(name, color)
+        public EntryFloatMultiplierElement(string name, Color color, MelonPreferences_Entry<float> entry, float multiplier) : base(name, color)
         {
             this.entry = entry;
-            this.increment = increment;
+            this.multiplier = multiplier;
         }
 
         public override ElementType Type => ElementType.Value;
@@ -27,16 +27,16 @@ namespace AvatarStatsLoader.BoneMenu
             entry.Value = value;
         }
 
-        public override string DisplayValue => "+/- " + increment.ToString();
+        public override string DisplayValue => "x" + multiplier.ToString();
 
         public override void OnSelectLeft()
         {
-            entry.Value += increment;
+            entry.Value *= multiplier;
         }
 
         public override void OnSelectRight()
         {
-            entry.Value -= increment;
+            entry.Value /= multiplier;
         }
     }
 }

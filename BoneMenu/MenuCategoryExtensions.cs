@@ -22,16 +22,16 @@ namespace AvatarStatsLoader.BoneMenu
             return floatElement;
         }
 
-        public static EntryFloatIncrementElement CreateEntryFloatIncrementElement(this MenuCategory category, string hexColor, MelonPreferences_Entry<float> entry, float increment)
+        public static EntryFloatMultiplierElement CreateEntryFloatMultiplierElement(this MenuCategory category, string hexColor, MelonPreferences_Entry<float> entry, float multiplier)
         {
             Color32 color32;
             ColorUtility.DoTryParseHtmlColor(hexColor, out color32);
-            return category.CreateEntryFloatIncrementElement(color32, entry, increment);
+            return category.CreateEntryFloatMultiplierElement(color32, entry, multiplier);
         }
 
-        public static EntryFloatIncrementElement CreateEntryFloatIncrementElement(this MenuCategory category, Color color, MelonPreferences_Entry<float> entry, float increment)
+        public static EntryFloatMultiplierElement CreateEntryFloatMultiplierElement(this MenuCategory category, Color color, MelonPreferences_Entry<float> entry, float multiplier)
         {
-            EntryFloatIncrementElement floatElement = new EntryFloatIncrementElement("", color, entry, increment);
+            EntryFloatMultiplierElement floatElement = new EntryFloatMultiplierElement("", color, entry, multiplier);
             category.Elements?.Add(floatElement);
             SafeActions.InvokeActionSafe<MenuCategory, MenuElement>(MenuCategory.OnElementCreated, category, floatElement);
             return floatElement;
